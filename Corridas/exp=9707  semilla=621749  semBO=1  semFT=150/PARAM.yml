@@ -1,0 +1,419 @@
+semilla_primigenia: 621749.0
+experimento: 9707.0
+dataset: analistajr_competencia_2026.csv.gz
+CA:
+  metodo: MachineLearning
+DR:
+  metodo: deflacion
+FE_hist:
+  Tendencias:
+    run: yes
+    ventana: 6.0
+    tendencia: yes
+    minimo: no
+    maximo: no
+    promedio: no
+    ratioavg: no
+    ratiomax: no
+FE_rf:
+  arbolitos: 20.0
+  hojas_por_arbol: 16.0
+  datos_por_hoja: 100.0
+  mtry_ratio: 0.2
+  train:
+    clase01_valor1:
+    - BAJA+2
+    - BAJA+1
+    training:
+    - 202101.0
+    - 202102.0
+    - 202103.0
+  lgb_param:
+    num_iterations: 20.0
+    num_leaves: 16.0
+    min_data_in_leaf: 100.0
+    feature_fraction_bynode: 0.2
+    boosting: rf
+    bagging_fraction: 0.6321206
+    bagging_freq: 1.0
+    feature_fraction: 1.0
+    max_bin: 31
+    objective: binary
+    first_metric_only: yes
+    boost_from_average: yes
+    feature_pre_filter: no
+    force_row_wise: yes
+    verbosity: -100.0
+    max_depth: -1
+    min_gain_to_split: 0.0
+    min_sum_hessian_in_leaf: 0.001
+    lambda_l1: 0.0
+    lambda_l2: 0.0
+    pos_bagging_fraction: 1.0
+    neg_bagging_fraction: 1.0
+    is_unbalance: no
+    scale_pos_weight: 1.0
+    drop_rate: 0.1
+    max_drop: 50.0
+    skip_drop: 0.5
+    extra_trees: no
+CN:
+  ratio: 0.2
+  desvios: 2.0
+  train:
+    clase01_valor1:
+    - BAJA+2
+    - BAJA+1
+    positivos: BAJA+2
+    training:
+    - 202101.0
+    - 202102.0
+    - 202103.0
+    validation: 202105.0
+    undersampling: 0.1
+    gan1: 0.975
+    gan0: -0.025
+trainingstrategy:
+  validate: 202107.0
+  training:
+  - 201901.0
+  - 201902.0
+  - 201903.0
+  - 201904.0
+  - 201905.0
+  - 201906.0
+  - 201907.0
+  - 201908.0
+  - 201909.0
+  - 201910.0
+  - 201911.0
+  - 201912.0
+  - 202001.0
+  - 202002.0
+  - 202011.0
+  - 202012.0
+  - 202101.0
+  - 202102.0
+  - 202103.0
+  - 202104.0
+  - 202105.0
+  training_pct: 1.0
+  positivos:
+  - BAJA+1
+  - BAJA+2
+  final_train:
+  - 201901.0
+  - 201902.0
+  - 201903.0
+  - 201904.0
+  - 201905.0
+  - 201906.0
+  - 201907.0
+  - 201908.0
+  - 201909.0
+  - 201910.0
+  - 201911.0
+  - 201912.0
+  - 202001.0
+  - 202002.0
+  - 202011.0
+  - 202012.0
+  - 202101.0
+  - 202102.0
+  - 202103.0
+  - 202104.0
+  - 202105.0
+  - 202106.0
+  - 202107.0
+  future: 202109.0
+hipeparametertuning:
+  num_interations: 40.0
+  hs:
+    pars:
+      num_iterations:
+        id: num_iterations
+        type: numeric
+        len: 1
+        lower: 2.0
+        upper: 10.0
+        values: ~
+        cnames: ~
+        allow.inf: no
+        has.default: no
+        default: ~
+        trafo: !expr |
+          function (x)
+          round(2^x)
+        requires: ~
+        tunable: yes
+        special.vals: []
+      num_leaves:
+        id: num_leaves
+        type: numeric
+        len: 1
+        lower: 2.0
+        upper: 11.0
+        values: ~
+        cnames: ~
+        allow.inf: no
+        has.default: no
+        default: ~
+        trafo: !expr |
+          function (x)
+          round(2^x)
+        requires: ~
+        tunable: yes
+        special.vals: []
+      learning_rate:
+        id: learning_rate
+        type: numeric
+        len: 1
+        lower: -7.0
+        upper: -0.1
+        values: ~
+        cnames: ~
+        allow.inf: no
+        has.default: no
+        default: ~
+        trafo: !expr |
+          function (x)
+          2^x
+        requires: ~
+        tunable: yes
+        special.vals: []
+      feature_fraction:
+        id: feature_fraction
+        type: numeric
+        len: 1
+        lower: 0.05
+        upper: 0.9
+        values: ~
+        cnames: ~
+        allow.inf: no
+        has.default: no
+        default: ~
+        trafo: ~
+        requires: ~
+        tunable: yes
+        special.vals: []
+      min_sum_hessian_in_leaf:
+        id: min_sum_hessian_in_leaf
+        type: numeric
+        len: 1
+        lower: -10.0
+        upper: 10.0
+        values: ~
+        cnames: ~
+        allow.inf: no
+        has.default: no
+        default: ~
+        trafo: !expr |
+          function (x)
+          2^x
+        requires: ~
+        tunable: yes
+        special.vals: []
+    forbidden: ~
+lgbm:
+  param_fijos:
+    objective: binary
+    metric: auc
+    first_metric_only: yes
+    boost_from_average: yes
+    feature_pre_filter: no
+    verbosity: -100.0
+    force_row_wise: yes
+    seed: 621749.0
+    extra_trees: no
+    num_leaves: 128.0
+    max_depth: -1
+    min_gain_to_split: 0.0
+    min_data_in_leaf: 0.0
+    min_sum_hessian_in_leaf: 0.001
+    lambda_l1: 0.0
+    lambda_l2: 0.0
+    bagging_fraction: 1.0
+    pos_bagging_fraction: 1.0
+    neg_bagging_fraction: 1.0
+    is_unbalance: no
+    scale_pos_weight: 1.0
+    drop_rate: 0.1
+    max_drop: 50.0
+    skip_drop: 0.5
+    max_bin: 31.0
+    early_stopping_rounds: 0.0
+out:
+  lgbm:
+    mejores_hiperparametros:
+      num_iterations: 6.5310218
+      num_leaves: 10.0573083
+      learning_rate: -4.9920953
+      feature_fraction: 0.2793977
+      min_sum_hessian_in_leaf: 3.1317363
+FT:
+  semillerio: 150.0
+  semillas:
+  - 156227
+  - 116141
+  - 182641
+  - 883249
+  - 952247
+  - 685367
+  - 102983
+  - 477461
+  - 246131
+  - 294773
+  - 307243
+  - 915379
+  - 291191
+  - 511213
+  - 547513
+  - 731597
+  - 857273
+  - 273113
+  - 406447
+  - 978031
+  - 394601
+  - 850823
+  - 315751
+  - 191461
+  - 316423
+  - 935393
+  - 471299
+  - 903871
+  - 250057
+  - 677333
+  - 356647
+  - 583577
+  - 936361
+  - 649081
+  - 350729
+  - 366479
+  - 164477
+  - 310819
+  - 196247
+  - 276917
+  - 852011
+  - 700811
+  - 115873
+  - 732211
+  - 344237
+  - 649487
+  - 260551
+  - 347359
+  - 102539
+  - 435593
+  - 134591
+  - 549937
+  - 328379
+  - 866933
+  - 948971
+  - 863153
+  - 262513
+  - 537011
+  - 480499
+  - 964559
+  - 618719
+  - 585911
+  - 851159
+  - 202621
+  - 140443
+  - 556883
+  - 527729
+  - 813377
+  - 846647
+  - 173087
+  - 684433
+  - 447481
+  - 414553
+  - 475691
+  - 834287
+  - 224443
+  - 480071
+  - 166609
+  - 905053
+  - 324089
+  - 983153
+  - 315409
+  - 533887
+  - 267017
+  - 136769
+  - 526709
+  - 762583
+  - 395107
+  - 920053
+  - 127913
+  - 299477
+  - 604801
+  - 689621
+  - 252223
+  - 469529
+  - 761443
+  - 574157
+  - 245339
+  - 418933
+  - 311393
+  - 701159
+  - 282167
+  - 427103
+  - 866713
+  - 687593
+  - 880031
+  - 818837
+  - 936227
+  - 727633
+  - 958637
+  - 959941
+  - 831539
+  - 187631
+  - 744431
+  - 592931
+  - 298861
+  - 161779
+  - 946507
+  - 819317
+  - 144883
+  - 186601
+  - 703243
+  - 835859
+  - 427457
+  - 429101
+  - 993001
+  - 861433
+  - 986429
+  - 307633
+  - 224011
+  - 456439
+  - 504149
+  - 950023
+  - 743837
+  - 207127
+  - 885959
+  - 381011
+  - 349849
+  - 711371
+  - 455513
+  - 250489
+  - 523937
+  - 578923
+  - 917117
+  - 841207
+  - 774199
+  - 189517
+  - 888691
+  - 801107
+  - 427523
+kaggle:
+  competencia: labo-1-virtual-2026-analista-jr
+  cortes:
+  - 1400.0
+  - 1500.0
+  - 1600.0
+  - 1700.0
+  - 1800.0
+  - 1900.0
+  - 2000.0
+  - 2100.0
+  - 2200.0
+  - 2300.0
+  - 2400.0
